@@ -1,6 +1,7 @@
 {
   "name": "pocock-flow",
   "owner": { "name": "Yasen Ivanov", "url": "https://github.com/vjfrosty" },
+  "description": "Aliases and a router for Matt Pocock's Claude Code skills, plus the upstream skills themselves.",
   "plugins": [
     {
       "name": "pocock-flow",

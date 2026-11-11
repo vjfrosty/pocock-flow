@@ -55,3 +55,11 @@ Usage: "use Pocock for this: <task>" — `/mp` picks the step.
 ## Credits
 
 All workflow content is [Matt Pocock's skills](https://github.com/mattpocock/skills) (MIT). This plugin only adds aliases, a router and auto-start rules on top.
+
+## Tests
+
+```bash
+npm test
+```
+
+Zero dependencies (Node 20+, `node:test`). Checks manifests, skill frontmatter, light/heavy rules, router coverage, README sync, and that every alias still points at an existing upstream skill. Locally the upstream check uses your installed `mattpocock-skills`; CI clones `mattpocock/skills` and runs weekly to catch upstream renames.
