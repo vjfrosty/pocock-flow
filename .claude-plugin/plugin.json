@@ -1,0 +1,8 @@
+{
+  "name": "pocock-flow",
+  "version": "0.1.0",
+  "description": "Short mp-* aliases and a router (/mp) for Matt Pocock's skills, with light/heavy auto-start rules. Requires mattpocock-skills.",
+  "author": { "name": "Yasen Ivanov" },
+  "license": "MIT",
+  "keywords": ["mattpocock", "skills", "workflow", "aliases"]
+}

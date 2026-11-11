@@ -1,0 +1,7 @@
+{
+  "name": "pocock-flow",
+  "owner": { "name": "Yasen Ivanov" },
+  "plugins": [
+    { "name": "pocock-flow", "source": "./", "description": "mp-* aliases and /mp router for Matt Pocock's skills", "category": "engineering" }
+  ]
+}
