@@ -9,22 +9,28 @@ The aliases read Matt's current SKILL.md files, so his updates still apply.
 
 ## Install
 
-Requires Matt's plugin:
+One marketplace gives you both this plugin and Matt's upstream skills:
 
 ```bash
-claude plugin marketplace add mattpocock/skills
-claude plugin install mattpocock-skills@mattpocock
-claude plugin marketplace add <path-or-github-repo-of-pocock-flow>
+claude plugin marketplace add vjfrosty/pocock-flow
+claude plugin install mattpocock-skills@pocock-flow
 claude plugin install pocock-flow@pocock-flow
 ```
 
-Per-project only: disable both at user level (`claude plugin disable ...`) and enable them in the project's `.claude/settings.local.json`:
+Already have Matt's plugin from `mattpocock/skills`? Skip the second line; the aliases find his skills from either marketplace.
 
-```json
-{ "enabledPlugins": { "mattpocock-skills@mattpocock": true, "pocock-flow@pocock-flow": true } }
+**Per-project only:** disable both at user level, then enable them in the project's `.claude/settings.local.json`:
+
+```bash
+claude plugin disable pocock-flow@pocock-flow
+claude plugin disable mattpocock-skills@pocock-flow
 ```
 
-Then run `/setup-matt-pocock-skills` once per repo.
+```json
+{ "enabledPlugins": { "mattpocock-skills@pocock-flow": true, "pocock-flow@pocock-flow": true } }
+```
+
+Restart Claude Code, then run `/setup-matt-pocock-skills` once per repo.
 
 ## Skills
 
@@ -45,3 +51,7 @@ Then run `/setup-matt-pocock-skills` once per repo.
 | `/mp-what` | `/wait-what` | light |
 
 Usage: "use Pocock for this: <task>" — `/mp` picks the step.
+
+## Credits
+
+All workflow content is [Matt Pocock's skills](https://github.com/mattpocock/skills) (MIT). This plugin only adds aliases, a router and auto-start rules on top.

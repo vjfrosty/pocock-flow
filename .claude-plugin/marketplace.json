@@ -1,7 +1,18 @@
 {
   "name": "pocock-flow",
-  "owner": { "name": "Yasen Ivanov" },
+  "owner": { "name": "Yasen Ivanov", "url": "https://github.com/vjfrosty" },
   "plugins": [
-    { "name": "pocock-flow", "source": "./", "description": "mp-* aliases and /mp router for Matt Pocock's skills", "category": "engineering" }
+    {
+      "name": "pocock-flow",
+      "source": "./",
+      "description": "mp-* aliases and /mp router for Matt Pocock's skills, with light/heavy auto-start rules",
+      "category": "engineering"
+    },
+    {
+      "name": "mattpocock-skills",
+      "source": { "source": "github", "repo": "mattpocock/skills" },
+      "description": "Matt Pocock's skills for real engineering (upstream, required by pocock-flow)",
+      "category": "engineering"
+    }
   ]
 }

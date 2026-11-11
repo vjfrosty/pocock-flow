@@ -5,7 +5,7 @@ description: "Matt Pocock skills router. Use when the user says to use Pocock, M
 
 # /mp — pick the next Pocock step
 
-1. Glob `~/.claude/plugins/cache/mattpocock/mattpocock-skills/*/skills/engineering/ask-matt/SKILL.md`, Read the highest version: it is the flow map. Read a target skill's SKILL.md before describing it.
+1. Glob `~/.claude/plugins/cache/*/mattpocock-skills/*/skills/engineering/ask-matt/SKILL.md`, Read the highest version: it is the flow map. Read a target skill's SKILL.md before describing it.
 2. Check the project state (quietly, in parallel):
    - `docs/agents/` exists? If not, the first step is `/setup-matt-pocock-skills` (user must type it).
    - `GLOSSARY.md`, `docs/adr/` — has grilling happened?
