@@ -46,12 +46,14 @@ const semverKey = (v) => v.split('.').map((n) => n.padStart(6, '0')).join('.');
  * Where Matt's upstream skills live, in priority order:
  * 1. $UPSTREAM_DIR (CI clones mattpocock/skills there)
  * 2. the highest installed version under ~/.claude/plugins/cache/<any marketplace>/mattpocock-skills/
- * Returns the path of its `skills/` folder, or null.
+ * Returns the path of its `skills/` folder, or null when upstream is not installed.
+ * Throws when UPSTREAM_DIR is set but holds no `skills/` folder: a wrong location must fail, not skip.
  */
 export function findUpstream() {
   if (process.env.UPSTREAM_DIR) {
     const p = join(process.env.UPSTREAM_DIR, 'skills');
-    return existsSync(p) ? p : null;
+    if (!existsSync(p)) throw new Error(`UPSTREAM_DIR is set but ${p} does not exist`);
+    return p;
   }
   const cache = join(homedir(), '.claude', 'plugins', 'cache');
   if (!existsSync(cache)) return null;

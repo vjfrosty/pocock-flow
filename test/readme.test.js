@@ -13,6 +13,11 @@ test('README table has a row for every skill', () => {
   for (const n of [ROUTER, ...LIGHT, ...HEAVY]) assert.ok(rows[n], `README missing /${n}`);
 });
 
+test('README table has no row for a skill that is gone', () => {
+  const known = [ROUTER, ...LIGHT, ...HEAVY];
+  assert.deepEqual(Object.keys(rows).filter((n) => !known.includes(n)), []);
+});
+
 test('README tiers match the skill files', () => {
   for (const n of LIGHT) assert.equal(rows[n].tier, 'light', n);
   for (const n of HEAVY) assert.equal(rows[n].tier, 'heavy', n);

@@ -62,4 +62,4 @@ All workflow content is [Matt Pocock's skills](https://github.com/mattpocock/ski
 npm test
 ```
 
-Zero dependencies (Node 20+, `node:test`). Checks manifests, skill frontmatter, light/heavy rules, router coverage, README sync, and that every alias still points at an existing upstream skill. Locally the upstream check uses your installed `mattpocock-skills`; CI clones `mattpocock/skills` and runs weekly to catch upstream renames.
+Zero dependencies (Node 22+, `node:test`). Checks manifests, skill frontmatter, light/heavy rules, router coverage, README sync, and that every alias still points at an existing upstream skill. Locally the upstream check uses your installed `mattpocock-skills`; CI clones `mattpocock/skills` and runs weekly to catch upstream renames. GitHub switches a schedule off after 60 days without repository activity; if the weekly run stops, start it by hand or re-enable it on the Actions tab.

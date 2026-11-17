@@ -30,18 +30,20 @@ test('router target ask-matt exists upstream', { skip }, () => {
 
 test('every upstream user-invoked skill is aliased or deliberately excluded', { skip }, () => {
   const covered = new Set([...LIGHT, ...HEAVY].map((n) => upstreamPath(parseSkill(n).body)));
-  const missing = [];
+  const userInvoked = [];
   for (const area of ['engineering', 'productivity']) {
     const dir = join(upstream, area);
-    if (!existsSync(dir)) continue;
+    assert.ok(existsSync(dir), `upstream has no ${area}/ folder: it was moved, so this check would cover nothing`);
     for (const skill of readdirSync(dir)) {
       const file = join(dir, skill, 'SKILL.md');
       if (!existsSync(file)) continue;
-      const rel = `${area}/${skill}`;
-      if (/disable-model-invocation:\s*true/.test(readFileSync(file, 'utf8')) && !covered.has(rel) && !EXCLUDED.has(rel)) {
-        missing.push(rel);
-      }
+      if (/^disable-model-invocation:\s*true/m.test(readFileSync(file, 'utf8'))) userInvoked.push(`${area}/${skill}`);
     }
   }
-  assert.deepEqual(missing, [], 'new upstream user-invoked skills need an alias or an EXCLUDED entry');
+  assert.ok(userInvoked.length > 0, 'no user-invoked skill found upstream: the disable-model-invocation marker changed');
+  assert.deepEqual(
+    userInvoked.filter((rel) => !covered.has(rel) && !EXCLUDED.has(rel)),
+    [],
+    'new upstream user-invoked skills need an alias or an EXCLUDED entry',
+  );
 });
